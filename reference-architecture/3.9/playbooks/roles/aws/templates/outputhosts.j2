@@ -12,6 +12,9 @@ masters
 {% for i in ec2node.results -%}
 {{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'apps'}"
 {% endfor -%}
+{% for i in ec2tier1.results -%}
+{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'tier1'}"
+{% endfor -%}
 {% for i in ec2infra.results -%}
 {{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
 {% endfor %}

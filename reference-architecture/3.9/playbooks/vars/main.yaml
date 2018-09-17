@@ -31,6 +31,9 @@ ec2_type_infra: "m5.2xlarge"
 #ec2_count_node: 3
 ec2_type_node: "m5.2xlarge"
 
+ec2_count_tier1: 1
+ec2_type_tier1: "m5.2xlarge"
+
 #ec2_count_cns: 3
 ec2_type_cns: "m5.2xlarge"
 
