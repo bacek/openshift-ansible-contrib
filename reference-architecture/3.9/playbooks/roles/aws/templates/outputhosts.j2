@@ -1,6 +1,6 @@
 [masters]
 {%- for i in ec2master.results %}
-{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'master'}"
+{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'master'}" openshift_node_group_name="node-config-master"
 {%- endfor %}
 
 [etcd]
@@ -10,13 +10,13 @@ masters
 
 [nodes]
 {% for i in ec2node.results -%}
-{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'apps'}"
+{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'apps'}" openshift_node_group_name="node-config-compute"
 {% endfor -%}
 {% for i in ec2tier1.results -%}
-{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'tier1'}"
+{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'tier1'}" openshift_node_group_name="node-config-compute"
 {% endfor -%}
 {% for i in ec2infra.results -%}
-{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+{{ i.tagged_instances[0].private_dns_name }} openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_node_group_name="node-config-infra"
 {% endfor %}
 [nodes:children]
 masters
